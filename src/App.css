@@ -3,6 +3,9 @@
     --secondary: #adb993;
     --tiertary: #d0d38f;
   }
+  body{
+    background-color: #282c34;
+  }
   
   .App {
     text-align: center;
