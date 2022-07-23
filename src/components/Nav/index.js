@@ -1,46 +1,57 @@
 import React from "react";
-import { capitalizeFirstLetter } from "../../utils/helpers";
 
-function Nav() {
-  const  categories = [
-    { name: 'commercial', description: 'Photos of grocery stores, food trucks, and other commercial projects' },
-    { name: 'portraits', description: 'Portraits of people in my life' },
-    { name: 'food', description: 'Delicious delicacies' },
-    { name: 'landscape', description: 'Fields, farmhouses, waterfalls, and the beauty of nature' }
-  ];
-
-  const handleClick = () => {
-    console.log("click handled")
-  }
-
+function Nav({ currentPage, handlePageChange }) {
   return (
-    <header data-testid="header" className="flex-row px-1">
-      <h2>
-        <a href="/">
-          <span role="img" aria-label="camera"> 📸</span> Oh Snap!
-        </a>
-      </h2>
+    <header className="flex-row">
+      <h1 className="name">
+        <a href="/">SujaRaghuram Manoj</a>
+      </h1>
       <nav>
         <ul className="flex-row">
           <li className="mx-2">
-            <a href="#about" onClick={() => handleClick()}>
-              About me
+            <a
+              href="#about"
+              onClick={() => handlePageChange("About")}
+              className={
+                currentPage === "About" ? "nav-link active" : "nav-link"
+              }
+            >
+              About
             </a>
           </li>
-          <li className={"mx-2"}>
-            <span onClick={() => handleClick()}>
-              Contact
-            </span>
+          <li className="mx-2">
+            <a
+              href="#projects"
+              onClick={() => handlePageChange("Projects")}
+              className={
+                currentPage === "Projects" ? "nav-link active" : "nav-link"
+              }
+            >
+              Projects
+            </a>
           </li>
-          {
-            categories.map((category) => (
-              <li className="mx-1" key={category.name} >
-                <span onClick={() => { handleClick(); }}>
-                 {capitalizeFirstLetter(category.name)}
-                </span>
-              </li>
-            ))
-          }
+          <li className="mx-2">
+            <a
+              href="#resume"
+              onClick={() => handlePageChange("Resume")}
+              className={
+                currentPage === "Resume" ? "nav-link active" : "nav-link"
+              }
+            >
+              Resume
+            </a>
+          </li>
+          <li className="mx-2">
+            <a
+              href="#contact"
+              onClick={() => handlePageChange("Contact")}
+              className={
+                currentPage === "Contact" ? "nav-link active" : "nav-link"
+              }
+            >
+              Contact
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
